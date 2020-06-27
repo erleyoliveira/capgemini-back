@@ -5,13 +5,11 @@ public class ContaDTO {
 	private String agencia;
 	private String numeroConta;
 	private Double saldo;
-	private ClienteDTO cliente;
 	
 	public ContaDTO(String agencia, String numeroConta, ClienteDTO cliente) {
 		this.agencia = agencia;
 		this.numeroConta = numeroConta;
 		this.saldo = 0D;
-		this.cliente = cliente;
 	}
 
 	public String getAgencia() {
@@ -38,12 +36,4 @@ public class ContaDTO {
 		this.saldo = saldo;
 	}
 
-	public ClienteDTO getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(ClienteDTO cliente) {
-		this.cliente = cliente;
-	}
-	
 }

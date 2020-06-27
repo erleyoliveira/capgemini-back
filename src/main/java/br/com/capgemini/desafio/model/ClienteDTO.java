@@ -5,6 +5,7 @@ public class ClienteDTO {
 	private String nomeCompleto;
 	private Integer cpf;
 	private String senha;
+	private ContaDTO conta;
 	
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -24,6 +25,12 @@ public class ClienteDTO {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public ContaDTO getConta() {
+		return conta;
+	}
+	public void setConta(ContaDTO conta) {
+		this.conta = conta;
 	}
 	
 }
