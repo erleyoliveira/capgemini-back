@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import br.com.capgemini.desafio.model.ClienteDTO;
+import br.com.capgemini.desafio.model.ContaDTO;
 import br.com.capgemini.desafio.service.ContaService;
 
 @Component
@@ -32,12 +33,15 @@ public class ClienteDAO {
 	
 	public void cadastrarCliente(ClienteDTO cliente) {
 		jdbcTemplate.update("INSERT INTO CLIENTE_CONTA(NOME_COMPLETO, CPF, SENHA, CONTA, AGENCIA, VALOR)VALUES(?, ?, ?, ?, ?, ?)",
-				new Object[] { cliente.getNomeCompleto(), cliente.getCpf(), cliente.getSenha(), contaService.gerarNumeroAleatorio(6), contaService.gerarNumeroAleatorio(4), 0D });
+				new Object[] { cliente.getNomeCompleto(), cliente.getCpf(), cliente.getSenha(), contaService.gerarNumeroAleatorio(999999), contaService.gerarNumeroAleatorio(9999), 0D });
 	}
 	
 	public ClienteDTO buscarInfoCliente(String cpf) {
 		return jdbcTemplate.queryForObject("SELECT * FROM CLIENTE_CONTA WHERE CPF = ?",
-				new Object[] { cpf }, ClienteDTO.class);
+				new Object[] { cpf }, (rs, rowNum) -> {
+						ClienteDTO cliente = new ClienteDTO(rs.getString("NOME_COMPLETO"), rs.getString("CPF"), new ContaDTO(rs.getString("AGENCIA"), rs.getString("CONTA"), Double.valueOf(rs.getString("VALOR"))));
+                    return cliente;
+            });
 	}
 
 }

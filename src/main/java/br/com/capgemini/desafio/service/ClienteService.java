@@ -31,4 +31,8 @@ public class ClienteService {
 		return clienteDao.buscarInfoCliente(cpf);
 	}
 
+	public void cadastrarCliente(ClienteDTO cliente) {
+		clienteDao.cadastrarCliente(cliente);
+	}
+
 }

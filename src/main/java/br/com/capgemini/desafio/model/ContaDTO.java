@@ -6,10 +6,10 @@ public class ContaDTO {
 	private String numeroConta;
 	private Double saldo;
 	
-	public ContaDTO(String agencia, String numeroConta, ClienteDTO cliente) {
+	public ContaDTO(String agencia, String numeroConta, Double saldo) {
 		this.agencia = agencia;
 		this.numeroConta = numeroConta;
-		this.saldo = 0D;
+		this.saldo = saldo;
 	}
 
 	public String getAgencia() {

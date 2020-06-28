@@ -3,9 +3,16 @@ package br.com.capgemini.desafio.model;
 public class ClienteDTO {
 	
 	private String nomeCompleto;
-	private Integer cpf;
+	private String cpf;
 	private String senha;
+	private Double valor;
 	private ContaDTO conta;
+	
+	public ClienteDTO(String nomeCompleto, String cpf, ContaDTO conta) {
+		this.nomeCompleto = nomeCompleto;
+		this.cpf = cpf;
+		this.conta = conta;
+	}
 	
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -14,10 +21,10 @@ public class ClienteDTO {
 		this.nomeCompleto = nomeCompleto;
 	}
 	
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	public String getSenha() {
@@ -25,6 +32,12 @@ public class ClienteDTO {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public Double getValor() {
+		return valor;
+	}
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 	public ContaDTO getConta() {
 		return conta;

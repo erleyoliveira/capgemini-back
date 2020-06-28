@@ -12,25 +12,23 @@ import br.com.capgemini.desafio.model.ClienteDTO;
 public class ContaService {
 	
 	@Autowired
-	private ContaDAO contaoDao;
+	private ContaDAO contaDao;
 	
 	public void depositarConta(ClienteDTO cliente) {
-		contaoDao.depositarConta(cliente);
+		contaDao.depositarConta(cliente);
 	}
 
 	public void debitarConta(ClienteDTO cliente) {
-		contaoDao.debitarConta(cliente);
+		contaDao.debitarConta(cliente);
 	}
 
-	public Integer gerarNumeroAleatorio(Integer quantidadeDigitos) {
-		String numero = "";
+	public String gerarNumeroAleatorio(Integer limite) {
 		Random random = new Random();
-		
-		for(int i = 0; i < quantidadeDigitos; i++) {
-			numero += numero + random.nextInt();
-		}
-		
-		return Integer.valueOf(numero);
+		return random.nextInt(limite) + "";
+	}
+	
+	public Double consultarSaldo(String cpf) {
+		return contaDao.consultarSaldo(cpf);
 	}
 	
 }

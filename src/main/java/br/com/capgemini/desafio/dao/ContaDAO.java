@@ -15,15 +15,20 @@ public class ContaDAO {
 	public void depositarConta(ClienteDTO cliente) {
 		Double valorAtual = jdbcTemplate.queryForObject("SELECT VALOR FROM CLIENTE_CONTA WHERE CPF = ?",
 				new Object[] { cliente.getCpf() }, Double.class);
-		Double valorTotal = valorAtual + cliente.getConta().getSaldo();
+		Double valorTotal = valorAtual + cliente.getValor();
 		jdbcTemplate.update("UPDATE CLIENTE_CONTA SET VALOR = ? WHERE CPF = ?", new Object[] { valorTotal, cliente.getCpf() });
 	}
 	
 	public void debitarConta(ClienteDTO cliente) {
 		Double valorAtual = jdbcTemplate.queryForObject("SELECT VALOR FROM CLIENTE_CONTA WHERE CPF = ?",
 				new Object[] { cliente.getCpf() }, Double.class);
-		Double valorTotal = valorAtual - cliente.getConta().getSaldo();
+		Double valorTotal = valorAtual - cliente.getValor();
 		jdbcTemplate.update("UPDATE CLIENTE_CONTA SET VALOR = ? WHERE CPF = ?", new Object[] { valorTotal, cliente.getCpf() });
+	}
+	
+	public Double consultarSaldo(String cpf) {
+		return jdbcTemplate.queryForObject("SELECT VALOR FROM CLIENTE_CONTA WHERE CPF = ?",
+				new Object[] { cpf }, Double.class);
 	}
 
 }
