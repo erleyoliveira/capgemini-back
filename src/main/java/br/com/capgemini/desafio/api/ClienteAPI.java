@@ -27,7 +27,7 @@ public class ClienteAPI {
 	}
 	
 	@PostMapping("cadastrarcliente")
-	public void cadastrarCliente(@RequestBody ClienteDTO cliente) {
+	public void cadastrarCliente(@RequestBody ClienteDTO cliente) throws Exception {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		cliente.setSenha("{bcrypt}" + passwordEncoder.encode(cliente.getSenha()));
 		clienteService.cadastrarCliente(cliente);
